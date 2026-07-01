@@ -89,25 +89,25 @@ export default function Inscripcion() {
 
   return (
     <PageTransition>
-      <section className="relative mx-auto min-h-screen max-w-3xl px-6 pb-24 pt-32">
-        <AnimatedSection className="mb-10 text-center">
+      <section className="relative mx-auto min-h-screen max-w-3xl px-6 pb-16 pt-28 sm:pb-24 sm:pt-32">
+        <AnimatedSection className="mb-8 text-center sm:mb-10">
           <span className="text-xs font-semibold uppercase tracking-widest text-lime-accent">
             Reserva tu plaza
           </span>
-          <h1 className="mt-3 font-display text-4xl font-bold sm:text-5xl">
+          <h1 className="mt-3 font-display text-3xl font-bold sm:text-5xl">
             Inscripción al torneo
           </h1>
-          <p className="mx-auto mt-4 max-w-xl text-white/60">
+          <p className="mx-auto mt-3 max-w-xl text-sm text-white/60 sm:mt-4 sm:text-base">
             Rellena los datos de la pareja para completar la inscripción. Todos los campos son obligatorios.
           </p>
 
-          <div className="glass mx-auto mt-6 inline-flex items-center gap-2 rounded-full border border-lime-accent/30 px-5 py-2.5 text-sm font-semibold text-lime-accent">
-            <Ticket size={18} /> Precio: 20 € por pareja (10 € por persona)
+          <div className="glass mx-auto mt-5 inline-flex items-center gap-2 rounded-full border border-lime-accent/30 px-4 py-2 text-xs font-semibold text-lime-accent sm:mt-6 sm:px-5 sm:py-2.5 sm:text-sm">
+            <Ticket size={16} /> Precio: 20 € por pareja (10 € por persona)
           </div>
         </AnimatedSection>
 
         <AnimatedSection delay={0.1}>
-          <form onSubmit={handleSubmit} className="glass space-y-10 rounded-3xl border border-white/10 p-6 shadow-card sm:p-10">
+          <form onSubmit={handleSubmit} className="glass space-y-8 rounded-3xl border border-white/10 p-5 shadow-card sm:space-y-10 sm:p-10">
             <PlayerFields
               title="Jugador 1"
               prefix="jugador1"
@@ -136,7 +136,7 @@ export default function Inscripcion() {
               </motion.div>
             )}
 
-            <Button type="submit" disabled={submitting} className="w-full text-lg disabled:opacity-60">
+            <Button type="submit" disabled={submitting} className="w-full disabled:opacity-60">
               {submitting ? 'Enviando...' : 'Enviar inscripción'}
             </Button>
           </form>

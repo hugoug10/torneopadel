@@ -42,57 +42,57 @@ const infoCards = [
 export default function Informacion() {
   return (
     <PageTransition>
-      <section className="relative mx-auto max-w-6xl px-6 pb-24 pt-32">
-        <AnimatedSection className="mx-auto mb-14 max-w-2xl text-center">
+      <section className="relative mx-auto max-w-6xl px-6 pb-16 pt-28 sm:pb-24 sm:pt-32">
+        <AnimatedSection className="mx-auto mb-10 max-w-2xl text-center sm:mb-14">
           <span className="text-xs font-semibold uppercase tracking-widest text-lime-accent">
             Todo lo que necesitas saber
           </span>
-          <h1 className="mt-3 font-display text-4xl font-bold sm:text-5xl">
+          <h1 className="mt-3 font-display text-3xl font-bold sm:text-5xl">
             Información del torneo
           </h1>
-          <p className="mt-4 text-white/60">
+          <p className="mt-3 text-sm text-white/60 sm:mt-4 sm:text-base">
             Fecha, horario, precio y normas de participación en un solo lugar.
           </p>
         </AnimatedSection>
 
-        <AnimatedSection delay={0.1} className="mb-14 grid gap-6 sm:grid-cols-3">
+        <AnimatedSection delay={0.1} className="mb-10 grid gap-4 sm:mb-14 sm:grid-cols-3 sm:gap-6">
           {scheduleItems.map(({ icon: Icon, label, value }) => (
             <div
               key={label}
-              className="glass rounded-2xl border border-white/10 p-6 text-center shadow-card"
+              className="glass rounded-2xl border border-white/10 p-5 text-center shadow-card sm:p-6"
             >
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-court-light/20 text-lime-accent">
-                <Icon size={24} />
+              <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-court-light/20 text-lime-accent sm:mb-4 sm:h-12 sm:w-12">
+                <Icon size={22} />
               </div>
               <p className="text-xs font-semibold uppercase tracking-widest text-white/50">
                 {label}
               </p>
-              <p className="mt-2 font-display text-lg font-semibold">{value}</p>
+              <p className="mt-2 font-display text-base font-semibold sm:text-lg">{value}</p>
             </div>
           ))}
         </AnimatedSection>
 
-        <div className="grid gap-6 sm:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-3 sm:gap-6">
           {infoCards.map(({ icon: Icon, title, description }, index) => (
             <AnimatedSection key={title} delay={index * 0.1}>
               <motion.div
                 whileHover={{ y: -8, borderColor: 'rgba(212,245,71,0.5)' }}
-                className="glass group h-full rounded-2xl border border-white/10 p-7 shadow-card transition-colors"
+                className="glass group h-full rounded-2xl border border-white/10 p-5 shadow-card transition-colors sm:p-7"
               >
-                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-court-light/20 text-lime-accent transition-colors group-hover:bg-lime-accent group-hover:text-ink">
-                  <Icon size={24} />
+                <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-court-light/20 text-lime-accent transition-colors group-hover:bg-lime-accent group-hover:text-ink sm:mb-5 sm:h-12 sm:w-12">
+                  <Icon size={22} />
                 </div>
-                <h3 className="font-display text-lg font-semibold">{title}</h3>
+                <h3 className="font-display text-base font-semibold sm:text-lg">{title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-white/60">{description}</p>
               </motion.div>
             </AnimatedSection>
           ))}
         </div>
 
-        <AnimatedSection delay={0.2} className="mt-10 space-y-4">
-          <div className="glass mx-auto flex max-w-3xl items-start gap-4 rounded-2xl border border-lime-accent/30 p-6 shadow-card">
-            <div className="mt-0.5 flex h-9 w-9 flex-none items-center justify-center rounded-full bg-lime-accent/20 text-lime-accent">
-              <HandCoins size={18} />
+        <AnimatedSection delay={0.2} className="mt-8 space-y-4 sm:mt-10">
+          <div className="glass mx-auto flex max-w-3xl items-start gap-3 rounded-2xl border border-lime-accent/30 p-5 shadow-card sm:gap-4 sm:p-6">
+            <div className="mt-0.5 flex h-8 w-8 flex-none items-center justify-center rounded-full bg-lime-accent/20 text-lime-accent sm:h-9 sm:w-9">
+              <HandCoins size={16} />
             </div>
             <p className="text-sm leading-relaxed text-white/75">
               <span className="font-semibold text-lime-accent">Sin ánimo de lucro:</span>{' '}
@@ -103,9 +103,9 @@ export default function Informacion() {
             </p>
           </div>
 
-          <div className="glass mx-auto flex max-w-3xl items-start gap-4 rounded-2xl border border-lime-accent/30 p-6 shadow-card">
-            <div className="mt-0.5 flex h-9 w-9 flex-none items-center justify-center rounded-full bg-lime-accent/20 text-lime-accent">
-              <Info size={18} />
+          <div className="glass mx-auto flex max-w-3xl items-start gap-3 rounded-2xl border border-lime-accent/30 p-5 shadow-card sm:gap-4 sm:p-6">
+            <div className="mt-0.5 flex h-8 w-8 flex-none items-center justify-center rounded-full bg-lime-accent/20 text-lime-accent sm:h-9 sm:w-9">
+              <Info size={16} />
             </div>
             <p className="text-sm leading-relaxed text-white/75">
               <span className="font-semibold text-lime-accent">Nota sobre el calendario:</span>{' '}
@@ -116,12 +116,12 @@ export default function Informacion() {
           </div>
         </AnimatedSection>
 
-        <AnimatedSection delay={0.3} className="mt-16 text-center">
-          <div className="glass mx-auto max-w-2xl rounded-3xl border border-white/10 px-8 py-10 shadow-card">
-            <h3 className="font-display text-2xl font-bold">
+        <AnimatedSection delay={0.3} className="mt-12 text-center sm:mt-16">
+          <div className="glass mx-auto max-w-2xl rounded-3xl border border-white/10 px-6 py-8 shadow-card sm:px-8 sm:py-10">
+            <h3 className="font-display text-xl font-bold sm:text-2xl">
               ¿Listo para pisar la pista?
             </h3>
-            <p className="mt-3 text-white/60">
+            <p className="mt-3 text-sm text-white/60 sm:text-base">
               Asegura tu plaza ahora mismo, las inscripciones se completan rápido.
             </p>
             <Button as={Link} to="/inscripcion" className="mt-6">

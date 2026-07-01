@@ -70,7 +70,7 @@ function LoginGate({ onSuccess }) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         onSubmit={handleSubmit}
-        className="glass w-full max-w-sm rounded-3xl border border-white/10 p-8 text-center shadow-card"
+        className="glass w-full max-w-sm rounded-3xl border border-white/10 p-6 text-center shadow-card sm:p-8"
       >
         <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-lime-accent/20 text-lime-accent">
           <Lock size={26} />
@@ -163,13 +163,13 @@ function Dashboard({ password, onLogout }) {
   const totalParejas = inscripciones.length;
 
   return (
-    <section className="mx-auto min-h-screen max-w-6xl px-6 pb-24 pt-32">
-      <div className="mb-10 flex flex-wrap items-center justify-between gap-4">
+    <section className="mx-auto min-h-screen max-w-6xl px-6 pb-16 pt-28 sm:pb-24 sm:pt-32">
+      <div className="mb-8 flex flex-wrap items-center justify-between gap-4 sm:mb-10">
         <div>
           <span className="text-xs font-semibold uppercase tracking-widest text-lime-accent">
             Administración
           </span>
-          <h1 className="mt-2 font-display text-3xl font-bold sm:text-4xl">
+          <h1 className="mt-2 font-display text-2xl font-bold sm:text-4xl">
             Inscripciones del torneo
           </h1>
           <p className="mt-1 text-sm text-white/60">
@@ -177,17 +177,18 @@ function Dashboard({ password, onLogout }) {
           </p>
         </div>
 
-        <div className="flex gap-3">
-          <Button variant="outline" onClick={handleExportCsv} className="!px-5 !py-2.5 text-sm">
-            <Download size={18} /> Exportar CSV
+        <div className="flex gap-2 sm:gap-3">
+          <Button variant="outline" onClick={handleExportCsv} className="!px-4 !py-2 text-xs sm:!px-5 sm:!py-2.5 sm:text-sm">
+            <Download size={16} />
+            <span className="hidden sm:inline">Exportar </span>CSV
           </Button>
-          <Button variant="ghost" onClick={onLogout} className="!px-5 !py-2.5 text-sm">
-            <LogOut size={18} /> Salir
+          <Button variant="ghost" onClick={onLogout} className="!px-4 !py-2 text-xs sm:!px-5 sm:!py-2.5 sm:text-sm">
+            <LogOut size={16} /> Salir
           </Button>
         </div>
       </div>
 
-      <div className="glass mb-6 flex items-center gap-3 rounded-2xl border border-white/10 px-5 py-3.5">
+      <div className="glass mb-6 flex items-center gap-3 rounded-2xl border border-white/10 px-4 py-3 sm:px-5 sm:py-3.5">
         <Search size={18} className="text-white/40" />
         <input
           value={query}
@@ -206,63 +207,109 @@ function Dashboard({ password, onLogout }) {
       {loading ? (
         <Loader label="Cargando inscripciones..." />
       ) : (
-        <div className="glass overflow-hidden rounded-2xl border border-white/10 shadow-card">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-sm">
-              <thead>
-                <tr className="border-b border-white/10 text-xs uppercase tracking-wider text-white/50">
-                  <th className="px-5 py-4">Fecha</th>
-                  <th className="px-5 py-4">Jugador 1</th>
-                  <th className="px-5 py-4">Teléfono</th>
-                  <th className="px-5 py-4">Jugador 2</th>
-                  <th className="px-5 py-4">Teléfono</th>
-                  <th className="px-5 py-4 text-right">Acciones</th>
-                </tr>
-              </thead>
-              <tbody>
-                <AnimatePresence>
-                  {inscripciones.map((row) => (
-                    <motion.tr
-                      key={row.id}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0, height: 0 }}
-                      className="border-b border-white/5 transition-colors hover:bg-white/5"
-                    >
-                      <td className="px-5 py-4 text-white/70">{row.fecha}</td>
-                      <td className="px-5 py-4 font-medium">
-                        {row.jugador1.nombre} {row.jugador1.apellidos}
-                      </td>
-                      <td className="px-5 py-4 text-white/70">{row.jugador1.telefono}</td>
-                      <td className="px-5 py-4 font-medium">
-                        {row.jugador2.nombre} {row.jugador2.apellidos}
-                      </td>
-                      <td className="px-5 py-4 text-white/70">{row.jugador2.telefono}</td>
-                      <td className="px-5 py-4 text-right">
-                        <button
-                          onClick={() => setConfirmTarget(row)}
-                          disabled={deletingId === row.id}
-                          className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold text-red-300 transition hover:bg-red-400/10 disabled:opacity-50"
-                        >
-                          <Trash2 size={14} />
-                          {deletingId === row.id ? 'Eliminando...' : 'Eliminar'}
-                        </button>
-                      </td>
-                    </motion.tr>
-                  ))}
-                </AnimatePresence>
+        <>
+          {/* Tarjetas: movil */}
+          <div className="grid gap-3 sm:hidden">
+            <AnimatePresence>
+              {inscripciones.map((row) => (
+                <motion.div
+                  key={row.id}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="glass rounded-2xl border border-white/10 p-4 shadow-card"
+                >
+                  <p className="text-xs text-white/50">{row.fecha}</p>
+                  <div className="mt-2 border-t border-white/10 pt-2">
+                    <p className="text-sm font-medium">
+                      {row.jugador1.nombre} {row.jugador1.apellidos}
+                    </p>
+                    <p className="text-xs text-white/60">{row.jugador1.telefono}</p>
+                  </div>
+                  <div className="mt-2 border-t border-white/10 pt-2">
+                    <p className="text-sm font-medium">
+                      {row.jugador2.nombre} {row.jugador2.apellidos}
+                    </p>
+                    <p className="text-xs text-white/60">{row.jugador2.telefono}</p>
+                  </div>
+                  <button
+                    onClick={() => setConfirmTarget(row)}
+                    disabled={deletingId === row.id}
+                    className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-red-400/10 px-3 py-1.5 text-xs font-semibold text-red-300 transition hover:bg-red-400/20 disabled:opacity-50"
+                  >
+                    <Trash2 size={14} />
+                    {deletingId === row.id ? 'Eliminando...' : 'Eliminar'}
+                  </button>
+                </motion.div>
+              ))}
+            </AnimatePresence>
 
-                {inscripciones.length === 0 && (
-                  <tr>
-                    <td colSpan={6} className="px-5 py-12 text-center text-white/40">
-                      No hay inscripciones que coincidan con la búsqueda.
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
+            {inscripciones.length === 0 && (
+              <div className="glass rounded-2xl border border-white/10 p-8 text-center text-sm text-white/40 shadow-card">
+                No hay inscripciones que coincidan con la búsqueda.
+              </div>
+            )}
           </div>
-        </div>
+
+          {/* Tabla: tablet y escritorio */}
+          <div className="glass hidden overflow-hidden rounded-2xl border border-white/10 shadow-card sm:block">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-sm">
+                <thead>
+                  <tr className="border-b border-white/10 text-xs uppercase tracking-wider text-white/50">
+                    <th className="px-5 py-4">Fecha</th>
+                    <th className="px-5 py-4">Jugador 1</th>
+                    <th className="px-5 py-4">Teléfono</th>
+                    <th className="px-5 py-4">Jugador 2</th>
+                    <th className="px-5 py-4">Teléfono</th>
+                    <th className="px-5 py-4 text-right">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <AnimatePresence>
+                    {inscripciones.map((row) => (
+                      <motion.tr
+                        key={row.id}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="border-b border-white/5 transition-colors hover:bg-white/5"
+                      >
+                        <td className="px-5 py-4 text-white/70">{row.fecha}</td>
+                        <td className="px-5 py-4 font-medium">
+                          {row.jugador1.nombre} {row.jugador1.apellidos}
+                        </td>
+                        <td className="px-5 py-4 text-white/70">{row.jugador1.telefono}</td>
+                        <td className="px-5 py-4 font-medium">
+                          {row.jugador2.nombre} {row.jugador2.apellidos}
+                        </td>
+                        <td className="px-5 py-4 text-white/70">{row.jugador2.telefono}</td>
+                        <td className="px-5 py-4 text-right">
+                          <button
+                            onClick={() => setConfirmTarget(row)}
+                            disabled={deletingId === row.id}
+                            className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold text-red-300 transition hover:bg-red-400/10 disabled:opacity-50"
+                          >
+                            <Trash2 size={14} />
+                            {deletingId === row.id ? 'Eliminando...' : 'Eliminar'}
+                          </button>
+                        </td>
+                      </motion.tr>
+                    ))}
+                  </AnimatePresence>
+
+                  {inscripciones.length === 0 && (
+                    <tr>
+                      <td colSpan={6} className="px-5 py-12 text-center text-white/40">
+                        No hay inscripciones que coincidan con la búsqueda.
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </>
       )}
 
       <AnimatePresence>

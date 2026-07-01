@@ -38,13 +38,13 @@ export default function ParejasCounter() {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.7, duration: 0.6 }}
-      className="glass inline-flex items-center gap-3 rounded-2xl border border-white/10 px-5 py-3.5"
+      className="glass inline-flex items-center gap-2.5 rounded-2xl border border-white/10 px-4 py-3 sm:gap-3 sm:px-5 sm:py-3.5"
     >
-      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-lime-accent/20 text-lime-accent">
-        <Users size={20} />
+      <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-lime-accent/20 text-lime-accent sm:h-10 sm:w-10">
+        <Users size={18} />
       </div>
       <div>
-        <p className="font-display text-2xl font-bold leading-none">
+        <p className="font-display text-xl font-bold leading-none sm:text-2xl">
           {count === null ? '—' : display}
         </p>
         <p className="text-xs text-white/60">

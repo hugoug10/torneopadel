@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <PageTransition>
       {/* HERO */}
-      <section className="relative flex min-h-screen items-center overflow-hidden bg-hero-gradient pt-24">
+      <section className="relative flex min-h-screen items-center overflow-hidden bg-hero-gradient pt-20 sm:pt-24">
         <div className="pointer-events-none absolute inset-0">
           <motion.div
             className="absolute -left-24 top-24 h-72 w-72 rounded-full bg-court-light/30 blur-3xl"
@@ -23,7 +23,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="relative mx-auto grid max-w-6xl items-center gap-16 px-6 py-20 md:grid-cols-2">
+        <div className="relative mx-auto grid max-w-6xl items-center gap-16 px-6 py-10 sm:py-20 md:grid-cols-2">
           <div>
             <motion.span
               initial={{ opacity: 0, y: 12 }}
@@ -38,7 +38,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="mt-6 font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl"
+              className="mt-5 font-display text-4xl font-bold leading-[1.05] tracking-tight sm:mt-6 sm:text-6xl lg:text-7xl"
             >
               Torneo de <span className="text-gradient">Pádel</span>
             </motion.h1>
@@ -47,7 +47,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="mt-3 font-display text-2xl font-medium text-white/80 sm:text-3xl"
+              className="mt-2 font-display text-lg font-medium text-white/80 sm:mt-3 sm:text-3xl"
             >
               Fuente de Pedro Naharro
             </motion.p>
@@ -56,16 +56,16 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="mt-6 flex flex-wrap gap-4 text-sm font-medium text-white/85"
+              className="mt-5 flex flex-wrap gap-2 text-xs font-medium text-white/85 sm:mt-6 sm:gap-4 sm:text-sm"
             >
-              <span className="glass flex items-center gap-2 rounded-full px-4 py-2">
-                <CalendarDays size={18} className="text-lime-accent" /> Sábado 18 de julio
+              <span className="glass flex items-center gap-1.5 rounded-full px-3 py-1.5 sm:gap-2 sm:px-4 sm:py-2">
+                <CalendarDays size={16} className="text-lime-accent" /> Sábado 18 de julio
               </span>
-              <span className="glass flex items-center gap-2 rounded-full px-4 py-2">
-                <Clock size={18} className="text-lime-accent" /> 20:00h hasta el final del torneo
+              <span className="glass flex items-center gap-1.5 rounded-full px-3 py-1.5 sm:gap-2 sm:px-4 sm:py-2">
+                <Clock size={16} className="text-lime-accent" /> 20:00h hasta el final
               </span>
-              <span className="glass flex items-center gap-2 rounded-full px-4 py-2">
-                <MapPin size={18} className="text-lime-accent" /> Fuente de Pedro Naharro
+              <span className="glass flex items-center gap-1.5 rounded-full px-3 py-1.5 sm:gap-2 sm:px-4 sm:py-2">
+                <MapPin size={16} className="text-lime-accent" /> Fuente de Pedro Naharro
               </span>
             </motion.div>
 
@@ -73,7 +73,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="mt-6 max-w-md text-base leading-relaxed text-white/70"
+              className="mt-5 max-w-md text-sm leading-relaxed text-white/70 sm:mt-6 sm:text-base"
             >
               Un torneo amateur pensado para disfrutar del pádel en buena compañía,
               sea cual sea tu nivel. Ven a competir, pasarlo bien y compartir pista
@@ -84,9 +84,9 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
-              className="mt-10 flex flex-wrap items-center gap-4"
+              className="mt-8 flex flex-wrap items-center gap-4 sm:mt-10"
             >
-              <Button as={Link} to="/inscripcion" className="text-lg">
+              <Button as={Link} to="/inscripcion">
                 Inscribirse <ArrowRight size={20} />
               </Button>
               <Link
@@ -97,7 +97,7 @@ export default function Home() {
               </Link>
             </motion.div>
 
-            <div className="mt-8">
+            <div className="mt-6 sm:mt-8">
               <ParejasCounter />
             </div>
           </div>
@@ -116,7 +116,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50"
+          className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 text-white/50 sm:block"
         >
           <div className="flex flex-col items-center gap-2">
             <span className="text-xs uppercase tracking-widest">Descubre más</span>
@@ -132,18 +132,18 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="relative mx-auto max-w-6xl px-6 py-24">
+      <section className="relative mx-auto max-w-6xl px-6 py-14 sm:py-24">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="glass mx-auto max-w-2xl rounded-3xl border border-white/10 px-8 py-10 text-center shadow-card"
+          className="glass mx-auto max-w-2xl rounded-3xl border border-white/10 px-6 py-8 text-center shadow-card sm:px-8 sm:py-10"
         >
-          <h3 className="font-display text-2xl font-bold">
+          <h3 className="font-display text-xl font-bold sm:text-2xl">
             ¿Listo para pisar la pista?
           </h3>
-          <p className="mt-3 text-white/60">
+          <p className="mt-3 text-sm text-white/60 sm:text-base">
             Consulta precio, horarios y normas del torneo, o asegura tu plaza ahora mismo.
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
