@@ -1,0 +1,12 @@
+name = "torneo-padel"
+pages_build_output_dir = "dist"
+compatibility_date = "2024-09-23"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "torneo-padel-db"
+database_id = "a3f28fbb-9adf-452f-8242-7bf2c6747909"
+
+# ADMIN_PASSWORD no vive aqui (se subiria a git en texto plano).
+# Local: define frontend/.dev.vars (gitignored) con ADMIN_PASSWORD=...
+# Produccion: `wrangler pages secret put ADMIN_PASSWORD` o el dashboard de Cloudflare Pages.
