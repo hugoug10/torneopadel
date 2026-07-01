@@ -2,6 +2,7 @@ export function toRow(record) {
   return {
     id: record.id,
     fecha: record.fecha_inscripcion,
+    nombreEquipo: record.nombre_equipo,
     jugador1: {
       nombre: record.jugador1_nombre,
       apellidos: record.jugador1_apellidos,

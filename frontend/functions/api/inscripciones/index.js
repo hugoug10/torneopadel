@@ -13,6 +13,7 @@ export async function onRequestPost({ request, env }) {
   }
 
   const record = {
+    nombre_equipo: body.nombreEquipo.trim(),
     jugador1_nombre: body.jugador1Nombre.trim(),
     jugador1_apellidos: body.jugador1Apellidos.trim(),
     jugador1_telefono: normalizePhone(body.jugador1Telefono),
@@ -23,11 +24,12 @@ export async function onRequestPost({ request, env }) {
 
   const result = await env.DB.prepare(
     `INSERT INTO inscripciones (
-      jugador1_nombre, jugador1_apellidos, jugador1_telefono,
+      nombre_equipo, jugador1_nombre, jugador1_apellidos, jugador1_telefono,
       jugador2_nombre, jugador2_apellidos, jugador2_telefono
-    ) VALUES (?, ?, ?, ?, ?, ?)`
+    ) VALUES (?, ?, ?, ?, ?, ?, ?)`
   )
     .bind(
+      record.nombre_equipo,
       record.jugador1_nombre,
       record.jugador1_apellidos,
       record.jugador1_telefono,
@@ -53,14 +55,15 @@ export async function onRequestGet({ request, env }) {
     const term = `%${q.trim().toLowerCase()}%`;
     stmt = env.DB.prepare(
       `SELECT * FROM inscripciones
-       WHERE LOWER(jugador1_nombre) LIKE ?
+       WHERE LOWER(nombre_equipo) LIKE ?
+          OR LOWER(jugador1_nombre) LIKE ?
           OR LOWER(jugador1_apellidos) LIKE ?
           OR LOWER(jugador2_nombre) LIKE ?
           OR LOWER(jugador2_apellidos) LIKE ?
           OR jugador1_telefono LIKE ?
           OR jugador2_telefono LIKE ?
        ORDER BY id DESC`
-    ).bind(term, term, term, term, term, term);
+    ).bind(term, term, term, term, term, term, term);
   } else {
     stmt = env.DB.prepare('SELECT * FROM inscripciones ORDER BY id DESC');
   }

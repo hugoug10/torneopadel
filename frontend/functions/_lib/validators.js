@@ -17,6 +17,7 @@ export function isNonEmptyText(value, { min = 2, max = 60 } = {}) {
 export function validateInscripcion(body) {
   const errors = {};
   const fields = [
+    ['nombreEquipo', 'Nombre del equipo'],
     ['jugador1Nombre', 'Nombre del jugador 1'],
     ['jugador1Apellidos', 'Apellidos del jugador 1'],
     ['jugador2Nombre', 'Nombre del jugador 2'],

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { User, Ticket, AlertCircle } from 'lucide-react';
+import { User, Ticket, AlertCircle, Shield } from 'lucide-react';
 import Button from '../components/Button.jsx';
 import FormInput from '../components/FormInput.jsx';
 import AnimatedSection from '../components/AnimatedSection.jsx';
@@ -11,6 +11,7 @@ import { crearInscripcion } from '../api/inscripciones.js';
 const PHONE_REGEX = /^[6789]\d{8}$/;
 
 const initialForm = {
+  nombreEquipo: '',
   jugador1Nombre: '',
   jugador1Apellidos: '',
   jugador1Telefono: '',
@@ -22,6 +23,7 @@ const initialForm = {
 function validate(form) {
   const errors = {};
   const requiredFields = [
+    ['nombreEquipo', 'El nombre del equipo es obligatorio.'],
     ['jugador1Nombre', 'El nombre es obligatorio.'],
     ['jugador1Apellidos', 'Los apellidos son obligatorios.'],
     ['jugador2Nombre', 'El nombre es obligatorio.'],
@@ -108,6 +110,22 @@ export default function Inscripcion() {
 
         <AnimatedSection delay={0.1}>
           <form onSubmit={handleSubmit} className="glass space-y-8 rounded-3xl border border-white/10 p-5 shadow-card sm:space-y-10 sm:p-10">
+            <div>
+              <h2 className="mb-5 flex items-center gap-2 font-display text-xl font-semibold text-lime-accent">
+                <Shield size={20} /> Equipo
+              </h2>
+              <FormInput
+                label="Nombre del equipo"
+                name="nombreEquipo"
+                value={form.nombreEquipo}
+                onChange={handleChange}
+                error={errors.nombreEquipo}
+                placeholder="Ej. Los Reyes del Smash"
+              />
+            </div>
+
+            <div className="h-px bg-white/10" />
+
             <PlayerFields
               title="Jugador 1"
               prefix="jugador1"

@@ -193,7 +193,7 @@ function Dashboard({ password, onLogout }) {
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Buscar por nombre o teléfono..."
+          placeholder="Buscar por equipo, nombre o teléfono..."
           className="w-full bg-transparent text-sm text-white placeholder-white/30 outline-none"
         />
       </div>
@@ -219,7 +219,10 @@ function Dashboard({ password, onLogout }) {
                   exit={{ opacity: 0, height: 0 }}
                   className="glass rounded-2xl border border-white/10 p-4 shadow-card"
                 >
-                  <p className="text-xs text-white/50">{row.fecha}</p>
+                  <div className="flex items-start justify-between gap-2">
+                    <p className="font-display text-sm font-semibold text-lime-accent">{row.nombreEquipo}</p>
+                    <p className="flex-none text-xs text-white/50">{row.fecha}</p>
+                  </div>
                   <div className="mt-2 border-t border-white/10 pt-2">
                     <p className="text-sm font-medium">
                       {row.jugador1.nombre} {row.jugador1.apellidos}
@@ -258,6 +261,7 @@ function Dashboard({ password, onLogout }) {
                 <thead>
                   <tr className="border-b border-white/10 text-xs uppercase tracking-wider text-white/50">
                     <th className="px-5 py-4">Fecha</th>
+                    <th className="px-5 py-4">Equipo</th>
                     <th className="px-5 py-4">Jugador 1</th>
                     <th className="px-5 py-4">Teléfono</th>
                     <th className="px-5 py-4">Jugador 2</th>
@@ -276,6 +280,7 @@ function Dashboard({ password, onLogout }) {
                         className="border-b border-white/5 transition-colors hover:bg-white/5"
                       >
                         <td className="px-5 py-4 text-white/70">{row.fecha}</td>
+                        <td className="px-5 py-4 font-medium text-lime-accent">{row.nombreEquipo}</td>
                         <td className="px-5 py-4 font-medium">
                           {row.jugador1.nombre} {row.jugador1.apellidos}
                         </td>
@@ -300,7 +305,7 @@ function Dashboard({ password, onLogout }) {
 
                   {inscripciones.length === 0 && (
                     <tr>
-                      <td colSpan={6} className="px-5 py-12 text-center text-white/40">
+                      <td colSpan={7} className="px-5 py-12 text-center text-white/40">
                         No hay inscripciones que coincidan con la búsqueda.
                       </td>
                     </tr>

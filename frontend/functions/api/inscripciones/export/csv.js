@@ -12,6 +12,7 @@ export async function onRequestGet({ request, env }) {
 
   const header = [
     'Fecha',
+    'Equipo',
     'Jugador 1 - Nombre',
     'Jugador 1 - Apellidos',
     'Jugador 1 - Teléfono',
@@ -27,6 +28,7 @@ export async function onRequestGet({ request, env }) {
     lines.push(
       [
         row.fecha_inscripcion,
+        row.nombre_equipo,
         row.jugador1_nombre,
         row.jugador1_apellidos,
         row.jugador1_telefono,
