@@ -98,7 +98,8 @@ export default function Informacion() {
               <span className="font-semibold text-lime-accent">Sin ánimo de lucro:</span>{' '}
               el dinero de las inscripciones no genera ningún beneficio. Todo el importe se
               destina a los premios del torneo y a los gastos propios del evento (agua, algo
-              para picar, alquiler de pista, etc.).
+              para picar, alquiler de pista, etc.). El pago se abonará en metálico el mismo
+              día del torneo.
             </p>
           </div>
 

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { CheckCircle2, Home } from 'lucide-react';
+import { CheckCircle2, Home, MessageCircle } from 'lucide-react';
 import Button from '../components/Button.jsx';
 import PageTransition from '../components/PageTransition.jsx';
 
@@ -44,7 +44,22 @@ export default function Confirmacion() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.55 }}
+            transition={{ delay: 0.5 }}
+            className="glass mt-6 flex items-start gap-3 rounded-2xl border border-lime-accent/30 p-4 text-left"
+          >
+            <div className="mt-0.5 flex h-8 w-8 flex-none items-center justify-center rounded-full bg-lime-accent/20 text-lime-accent">
+              <MessageCircle size={16} />
+            </div>
+            <p className="text-sm leading-relaxed text-white/75">
+              En breve te incluiremos en un grupo de WhatsApp del torneo con toda la
+              información y novedades.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
             className="mt-8"
           >
             <Button as={Link} to="/" className="mx-auto">
